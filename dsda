@@ -1,0 +1,68 @@
+
+getgenv().a = true 
+spawn(function()
+while task.wait() do 
+     if a== true then 
+ for i,v in pairs(game:GetService("Workspace").IgnoreList.Enemies:GetChildren()) do 
+     if v:IsA("Model") and v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 then 
+         game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame * CFrame.new(0,0,3)
+        
+     end 
+    end 
+     else
+        wait()
+        break 
+     end end end)
+
+     getgenv().a = true 
+     spawn(function()
+     while task.wait(0.2) do 
+          if a == true then 
+            
+            local args = {
+                [1] = 2
+            }
+            
+            game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("Knit"):WaitForChild("Services"):WaitForChild("CombatService"):WaitForChild("RE"):WaitForChild("M1"):FireServer(unpack(args))
+            
+          else
+             wait()
+             break 
+          end end end)
+
+          getgenv().b = true 
+          spawn(function()
+          while task.wait(0.2) do 
+               if b == true then 
+          if game:GetService("Players").LocalPlayer.PlayerGui.HUB.Reward.Visible == true then 
+            local args = {
+                [1] = {
+                    ["map"] = "Ninja Village",
+                    ["damage"] = 35865,
+                    ["time"] = "00:00:58",
+                    ["difficulty"] = 2,
+                    ["experience"] = 200,
+                    ["rewards"] = {
+                        [1] = "Skill_Pain",
+                        [2] = "RedGem",
+                        [3] = "RedGem",
+                        [4] = "RedGem"
+                    },
+                    ["GameSettings"] = {
+                        ["difficulty"] = "Normal",
+                        ["plrAmount"] = "1",
+                        ["map"] = "Ninja Village"
+                    },
+                    ["luckGamepass"] = false
+                }
+            }
+            
+            game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("Knit"):WaitForChild("Services"):WaitForChild("DataService"):WaitForChild("RF"):WaitForChild("Teleport"):InvokeServer(unpack(args))
+            
+            wait(.5)
+             getgenv().b = false
+          end
+        else
+            wait()
+            break 
+         end end end)
