@@ -39,7 +39,7 @@ while task.wait() do
                     ["map"] = map_name,
                     ["damage"] = 35865,
                     ["time"] = "00:00:58",
-                    ["difficulty"] = 2,
+                    ["difficulty"] = difficulty_rarity,
                     ["experience"] = 200,
                     ["rewards"] = {
                         [1] = "Skill_Pain",
