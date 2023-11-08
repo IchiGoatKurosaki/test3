@@ -1,4 +1,3 @@
-
 getgenv().a = true 
 spawn(function()
 while task.wait() do 
@@ -37,7 +36,7 @@ while task.wait() do
           if game:GetService("Players").LocalPlayer.PlayerGui.HUB.Reward.Visible == true then 
             local args = {
                 [1] = {
-                    ["map"] = "Ninja Village",
+                    ["map"] = map_name,
                     ["damage"] = 35865,
                     ["time"] = "00:00:58",
                     ["difficulty"] = 2,
@@ -49,7 +48,7 @@ while task.wait() do
                         [4] = "RedGem"
                     },
                     ["GameSettings"] = {
-                        ["difficulty"] = "difficulty_map,
+                        ["difficulty"] = difficulty_map,
                         ["plrAmount"] = "1",
                         ["map"] = map_name
                     },
