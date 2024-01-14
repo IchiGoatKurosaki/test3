@@ -1,4 +1,4 @@
---c
+--s
 
 
 local vu = game:GetService("VirtualUser")
@@ -240,11 +240,12 @@ Tab:AddToggle({
     
       
                 elseif game:GetService("Players").LocalPlayer.ProfileService.Quest.Quest.Value ~= 0 and game:GetService("Players").LocalPlayer.ProfileService.Quest.QuestDesc.Value == QUESTDESC then 
-                  game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart").CFrame = MONCFRAME          
+                 
                   for i,v in pairs(workspace.Live:GetDescendants()) do 
-       
+                    if v:IsA('Model') and not  v:FindFirstChild("HumanoidRootPart")  then 
+                      game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart").CFrame = MONCFRAME
                       Info:Set("Autofarm Status: Not Found Monster - Teleport to [ " .. MON .. " ]")
-                  if v:IsA('Model') and  v:FindFirstChild("HumanoidRootPart") and v.HumanoidRootPart.OverheadGUI.Main.User.Text  == MON  and v:FindFirstChild("Humanoid")  and v.Humanoid.Health > 0 then 
+                  elseif v:IsA('Model') and  v:FindFirstChild("HumanoidRootPart") and v.HumanoidRootPart.OverheadGUI.Main.User.Text  == MON  and v:FindFirstChild("Humanoid")  and v.Humanoid.Health > 0 then 
                     Info:Set("Autofarm Status: Kill Quest Enemies [ " .. MON .. " ]")
                       game.Players.LocalPlayer.Character:WaitForChild("HumanoidRootPart").CFrame = v.HumanoidRootPart.CFrame * CFrame.new(0,0,4)
                       game:GetService'VirtualUser':CaptureController()
