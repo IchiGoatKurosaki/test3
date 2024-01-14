@@ -1,3 +1,4 @@
+--EMXIN
 
 
 local vu = game:GetService("VirtualUser")
@@ -253,15 +254,15 @@ Tab:AddToggle({
                 elseif game:GetService("Players").LocalPlayer.ProfileService.Quest.Quest.Value ~= 0 and game:GetService("Players").LocalPlayer.ProfileService.Quest.QuestDesc.Value == QUESTDESC then 
                  
   
-                  for i,v in pairs(workspace.Live:GetDescendants()) do 
-                    if v:IsA('Model')  and  v:FindFirstChild("HumanoidRootPart") and v.HumanoidRootPart:FindFirstChild("OverheadGUI") and  v.HumanoidRootPart.OverheadGUI:FindFirstChild("Main") and v.HumanoidRootPart.OverheadGUI.Main:FindFirstChild("User") and v.HumanoidRootPart.OverheadGUI.Main.User.Text  == MON  and v:FindFirstChild("Humanoid")  and v.Humanoid.Health > 0 then 
+                  for i,v in pairs(workspace.Live:GetChildren()) do 
+                    if v:IsA("Model") and v.Name == MON and v:FindFirstChild("Humanoid")  and v.Humanoid.Health > 0 then 
                     Info:Set("Autofarm Status: Kill Quest Enemies [ " .. MON .. " ]")
                       game.Players.LocalPlayer.Character:WaitForChild("HumanoidRootPart").CFrame = v:GetModelCFrame() * CFrame.new(0,0,4)
                       game:GetService'VirtualUser':CaptureController()
                       game:GetService'VirtualUser':Button1Down(Vector2.new(0,1,0,1))
-                    elseif v:IsA("Model") and v.Name ~= MON then 
+                    elseif v:IsA("Model") and not v:FindFirstChild(MON) then 
                       game.Players.LocalPlayer.Character:WaitForChild("HumanoidRootPart").CFrame = MONCFRAME
-                      Info:Set("Autofarm Status: Not Found Enemies - Teleport To [ " .. MON .. " ]")
+                      Info:Set("Autofarm Status: Not Found Enemies - Teleport To Waiting Spawn")
                    end 
                   end
                 
