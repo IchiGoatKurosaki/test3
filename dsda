@@ -1,4 +1,3 @@
---d
 
 
 local vu = game:GetService("VirtualUser")
@@ -186,6 +185,18 @@ game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.Islands["
 
  ]]
 
+ spawn(function()
+  while wait(0.5) do 
+    pcall(function()
+for i,v in pairs(workspace.Live:GetDescendants()) do 
+ if v:IsA('Model') and  v:FindFirstChild("HumanoidRootPart") and v.HumanoidRootPart:FindFirstChild("OverheadGUI") and  v.HumanoidRootPart.OverheadGUI:FindFirstChild("Main") and v.HumanoidRootPart.OverheadGUI.Main:FindFirstChild("User")  and v:FindFirstChild("Humanoid")  and v.Humanoid.Health > 0 then 
+   v.Name = v.HumanoidRootPart.OverheadGUI.Main.User.Text  
+ end 
+end
+end)
+end 
+end)
+
 local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
 local Window = OrionLib:MakeWindow({Name = "Sukuna - " .. GetName.Name, HidePremium = false, SaveConfig = false, ConfigFolder = "NilFolder"})
 
@@ -243,12 +254,14 @@ Tab:AddToggle({
                  
   
                   for i,v in pairs(workspace.Live:GetDescendants()) do 
-             
-                 if v:IsA('Model') and  v:FindFirstChild("HumanoidRootPart") and v.HumanoidRootPart.OverheadGUI.Main.User.Text  == MON  and v:FindFirstChild("Humanoid")  and v.Humanoid.Health > 0 then 
+                    if v:IsA('Model')  and  v:FindFirstChild("HumanoidRootPart") and v.HumanoidRootPart:FindFirstChild("OverheadGUI") and  v.HumanoidRootPart.OverheadGUI:FindFirstChild("Main") and v.HumanoidRootPart.OverheadGUI.Main:FindFirstChild("User") and v.HumanoidRootPart.OverheadGUI.Main.User.Text  == MON  and v:FindFirstChild("Humanoid")  and v.Humanoid.Health > 0 then 
                     Info:Set("Autofarm Status: Kill Quest Enemies [ " .. MON .. " ]")
                       game.Players.LocalPlayer.Character:WaitForChild("HumanoidRootPart").CFrame = v:GetModelCFrame() * CFrame.new(0,0,4)
                       game:GetService'VirtualUser':CaptureController()
                       game:GetService'VirtualUser':Button1Down(Vector2.new(0,1,0,1))
+                    elseif v:IsA("Model") and v.Name ~= MON then 
+                      game.Players.LocalPlayer.Character:WaitForChild("HumanoidRootPart").CFrame = MONCFRAME
+                      Info:Set("Autofarm Status: Not Found Enemies - Teleport To [ " .. MON .. " ]")
                    end 
                   end
                 
